@@ -8,7 +8,7 @@ For more information please see <a href='http://devsoulwolf.github.io/android-di
 
 
 
-## PictureChooseLib with Java code
+## android-dialog-builder with Java code
 ```java
 public void onClick(View v){
         if(v.getId() == R.id.left){
