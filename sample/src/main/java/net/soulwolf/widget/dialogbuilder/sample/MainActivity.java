@@ -7,9 +7,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import net.soulwolf.widget.dialogbuilder.DialogBuilder;
 import net.soulwolf.widget.dialogbuilder.Gravity;
+import net.soulwolf.widget.dialogbuilder.MasterDialog;
+import net.soulwolf.widget.dialogbuilder.OnItemClickListener;
 import net.soulwolf.widget.dialogbuilder.adapter.GridDialogAdapter;
 import net.soulwolf.widget.dialogbuilder.adapter.TextDialogAdapter;
 import net.soulwolf.widget.dialogbuilder.dialog.AlertMasterDialog;
@@ -18,7 +21,7 @@ import net.soulwolf.widget.dialogbuilder.dialog.ListMasterDialog;
 import net.soulwolf.widget.dialogbuilder.model.GridModel;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener ,OnItemClickListener{
 
     Toolbar mToolbar;
 
@@ -27,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(mToolbar);
+        setSupportActionBar(mToolbar);
         findViewById(R.id.left).setOnClickListener(this);
         findViewById(R.id.top).setOnClickListener(this);
         findViewById(R.id.right).setOnClickListener(this);
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //.setIgnoreStatusBar(false)
                     .setLayoutParams(700, ViewGroup.LayoutParams.MATCH_PARENT)
                     .setGravity(Gravity.LEFT)
+                    .setOnItemClickListener(this)
                     .setBackgroundResource(R.color.toolbar_background);
             ListMasterDialog dialog = new ListMasterDialog(builder);
             dialog.setAdapter(new TextDialogAdapter(this,getSimpleStringData(8)));
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     .setAnimation(R.anim.da_slide_in_top, R.anim.da_slide_out_top)
                     //.setIgnoreStatusBar(false)
                     .setGravity(Gravity.TOP)
+                    .setOnItemClickListener(this)
                     .setBackgroundResource(R.color.toolbar_background);
             ListMasterDialog dialog = new ListMasterDialog(builder);
             dialog.setCancelButton(false);
@@ -65,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //.setIgnoreStatusBar(false)
                     .setLayoutParams(700, ViewGroup.LayoutParams.MATCH_PARENT)
                     .setGravity(Gravity.RIGHT)
+                    .setOnItemClickListener(this)
                     .setBackgroundResource(R.color.toolbar_background);
             ListMasterDialog dialog = new ListMasterDialog(builder);
             dialog.setAdapter(new TextDialogAdapter(this,getSimpleStringData(8)));
@@ -72,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else if(v.getId() == R.id.bottom){
             DialogBuilder builder = new DialogBuilder(this)
                     .setAnimation(R.anim.da_slide_in_bottom, R.anim.da_slide_out_bottom)
+                    .setOnItemClickListener(this)
                     //.setIgnoreStatusBar(false)
                     .setGravity(Gravity.BOTTOM);
             ListMasterDialog dialog = new ListMasterDialog(builder);
@@ -79,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             dialog.show();
         }else if(v.getId() == R.id.center){
             DialogBuilder builder = new DialogBuilder(this)
+                    .setOnItemClickListener(this)
                     .setAnimation(R.anim.da_fade_in_center, R.anim.da_fade_out_center)
                     //.setIgnoreStatusBar(false)
                     .setGravity(Gravity.CENTER);
@@ -92,6 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else if(v.getId() == R.id.center1){
             DialogBuilder builder = new DialogBuilder(this)
                     .setAnimation(R.anim.da_fade_in_center, R.anim.da_fade_out_center)
+                    .setOnItemClickListener(this)
                     //.setIgnoreStatusBar(false)
                     .setGravity(Gravity.CENTER);
             AlertMasterDialog dialog = new AlertMasterDialog(builder);
@@ -105,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else if(v.getId() == R.id.grid){
             DialogBuilder builder = new DialogBuilder(this)
                     .setAnimation(R.anim.da_slide_in_bottom, R.anim.da_slide_out_bottom)
+                    .setOnItemClickListener(this)
                     //.setIgnoreStatusBar(false)
                     .setGravity(Gravity.BOTTOM);
             GridMasterDialog dialog = new GridMasterDialog(builder);
@@ -131,6 +141,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             array[i] = "SIMPLE-DATA" + i;
         }
         return array;
+    }
+
+    @Override
+    public void onItemClick(MasterDialog dialog, View view, int position) {
+        Toast.makeText(this,"Item click:" + position,Toast.LENGTH_SHORT).show();
     }
 
     @Override
