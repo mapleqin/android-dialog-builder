@@ -33,5 +33,5 @@ public interface OnDismissListener {
      * @param dialog The dialog that was dismissed will be passed into the
      *            method.
      */
-    public void onDismiss(IDialogBuilder dialog);
+    public void onDismiss(IMasterDialog dialog);
 }

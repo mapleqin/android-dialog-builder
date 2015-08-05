@@ -24,7 +24,7 @@ import android.content.Context;
  * author: Soulwolf Created on 2015/8/4 21:36.
  * email : Ching.Soulwolf@gmail.com
  */
-public interface IMasterDialog{
+interface IMasterDialog{
 
     /**
      * The dialog add to window!

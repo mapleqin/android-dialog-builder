@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dd_dialog_padding"
+    android:paddingLeft="@dimen/dd_dialog_padding"
+    android:paddingBottom="@dimen/dd_dialog_padding"
+    android:paddingRight="@dimen/dd_dialog_padding">
+
+    <GridView
+        android:id="@+id/di_dialog_grid"
+        android:layout_width="match_parent"
+        android:dividerHeight="0dp"
+        android:divider="@android:color/transparent"
+        android:numColumns="4"
+        android:overScrollMode="never"
+        android:verticalSpacing="5dp"
+        android:horizontalSpacing="5dp"
+        android:background="@drawable/dd_item_round_shape"
+        android:layout_height="wrap_content"/>
+
+    <include layout="@layout/dl_dialog_cancel"/>
+</LinearLayout>

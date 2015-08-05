@@ -1,2 +1,4 @@
 <resources>
+    <string name="ds_cancel">取消</string>
+    <string name="ds_ok">确定</string>
 </resources>

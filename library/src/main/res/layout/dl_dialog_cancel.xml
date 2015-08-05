@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    android:id="@+id/di_dialog_cancel_layout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingTop="@dimen/dd_dialog_padding"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/di_dialog_cancel"
+        android:background="@drawable/dd_selector_cancel_click"
+        android:layout_width="match_parent"
+        android:textColor="@drawable/dd_selector_text"
+        android:textSize="@dimen/dd_dialog_button_text_size"
+        android:textStyle="bold"
+        android:text="@string/ds_cancel"
+        android:padding="@dimen/dd_dialog_item_padding"
+        android:layout_height="wrap_content" />
+
+</FrameLayout>

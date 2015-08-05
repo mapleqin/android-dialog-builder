@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dd_dialog_padding">8dp</dimen>
+    <dimen name="dd_dialog_item_padding">13dp</dimen>
+    <dimen name="dd_dialog_content_padding">15dp</dimen>
+    <dimen name="dd_dialog_button_round_radius">3dp</dimen>
+    <dimen name="dd_dialog_button_text_size">17sp</dimen>
+    <dimen name="dd_dialog_content_text_size">16sp</dimen>
+    <dimen name="dd_dialog_line_height">0.1dp</dimen>
+</resources>

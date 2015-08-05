@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dd_dialog_content_padding"
+        android:layout_marginRight="@dimen/dd_dialog_content_padding"
+        android:background="@drawable/dd_white_round_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@android:id/text1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dd_dialog_item_padding"
+            android:clickable="true"
+            android:textColor="@color/dc_green_text"
+            android:textSize="@dimen/dd_dialog_button_text_size" />
+
+        <TextView
+            android:id="@android:id/text2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dd_dialog_content_padding"
+            android:clickable="true"
+            android:textColor="@color/dc_content_text"
+            android:textSize="@dimen/dd_dialog_content_text_size" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dd_dialog_line_height"
+            android:background="@color/dc_default_line" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@android:id/button1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/dd_selector_cancel_click"
+                android:gravity="center"
+                android:padding="@dimen/dd_dialog_item_padding"
+                android:textColor="@drawable/dd_selector_text"
+                android:textSize="@dimen/dd_dialog_button_text_size" />
+
+            <View
+                android:id="@android:id/icon1"
+                android:layout_width="@dimen/dd_dialog_line_height"
+                android:layout_height="match_parent"
+                android:background="@color/dc_default_line"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@android:id/button2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/dd_selector_cancel_click"
+                android:gravity="center"
+                android:padding="@dimen/dd_dialog_item_padding"
+                android:textColor="@drawable/dd_selector_text"
+                android:textSize="@dimen/dd_dialog_button_text_size"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

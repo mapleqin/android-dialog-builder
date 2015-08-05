@@ -21,10 +21,10 @@ package net.soulwolf.widget.dialogbuilder;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.annotation.AnimRes;
 import android.support.annotation.IdRes;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
@@ -53,9 +53,7 @@ public abstract class MasterDialog implements IMasterDialog{
 
     protected boolean mCancelable;
 
-    public MasterDialog(Context context){
-        this(new DialogBuilder(context));
-    }
+    protected boolean isPlaying;
 
     public MasterDialog(DialogBuilder builder){
         if(builder == null){
@@ -69,7 +67,13 @@ public abstract class MasterDialog implements IMasterDialog{
         this.mContainer = (ViewGroup) inflater.inflate(R.layout.dl_dialog_container,mDecorView,false);
         this.mShadowView = mContainer.findViewById(R.id.di_dialog_container_shadow);
         this.mContentView = onCreateView(inflater, mContainer);
-        this.mContainer.addView(mContentView);
+        this.mContentView.setBackgroundDrawable(mDialogBuilder.getBackground());
+        parserLayoutGravity();
+
+    }
+
+    private void parserLayoutGravity() {
+        this.mContainer.addView(mContentView,mDialogBuilder.getLayoutParams());
     }
 
     protected abstract View onCreateView(LayoutInflater inflater,ViewGroup container);
@@ -80,34 +84,48 @@ public abstract class MasterDialog implements IMasterDialog{
             return;
         }
         attachToWindow();
+        if(mDialogBuilder.getOnShowListener() != null){
+            mDialogBuilder.getOnShowListener().onShow(this);
+        }
     }
 
     private void attachToWindow() {
-        mDecorView.addView(mContainer,FrameLayout.LayoutParams.MATCH_PARENT,FrameLayout.LayoutParams.MATCH_PARENT);
+        mDecorView.addView(mContainer, FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         playDialogInAnimation();
         mContainer.requestFocus();
         mContainer.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if(keyCode == KeyEvent.KEYCODE_BACK
-                        && event.getAction() == KeyEvent.ACTION_UP){
-                    if(mDialogBuilder.getOnKeyListener() != null){
+                if (keyCode == KeyEvent.KEYCODE_BACK
+                        && event.getAction() == KeyEvent.ACTION_UP) {
+                    if (mDialogBuilder.getOnKeyListener() != null) {
                         return onBackPressed()
-                                && mDialogBuilder.getOnKeyListener()
-                                .onKey(MasterDialog.this,keyCode,event);
+                                || mDialogBuilder.getOnKeyListener()
+                                .onKey(MasterDialog.this, keyCode, event);
                     }
                     return onBackPressed();
                 }
                 return false;
             }
         });
+        mShadowView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return onBackPressed();
+            }
+        });
+        mShowing = true;
     }
 
     public boolean onBackPressed(){
-        return false;
+        if(mCancelable){
+            cancel();
+        }
+        return mCancelable;
     }
 
     protected void playDialogInAnimation() {
+        clearAnimation();
         Animation inAnimation = mDialogBuilder.getDialogInAnimation();
         if(inAnimation != null){
             AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f,1.0f);
@@ -121,13 +139,55 @@ public abstract class MasterDialog implements IMasterDialog{
     @Override
     public void cancel() {
         if(isShowing()){
-
+            dismiss();
+            if(mDialogBuilder.getOnCancelListener() != null){
+                mDialogBuilder.getOnCancelListener().onCancel(this);
+            }
         }
     }
 
     @Override
     public void dismiss() {
+        if(isShowing()){
+            Animation outAnimation = mDialogBuilder.getDialogOutAnimation();
+            if(outAnimation != null){
+                playDialogOutAnimation(outAnimation);
+            }else {
+                detachedFromWindow();
+            }
+        }
+    }
 
+    private void playDialogOutAnimation(Animation outAnimation) {
+        if(isPlaying){
+            return;
+        }
+        clearAnimation();
+        AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f,0.0f);
+        alphaAnimation.setDuration(outAnimation.getDuration());
+        outAnimation.setAnimationListener(new SimpleAnimationListener(){
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                isPlaying = false;
+                detachedFromWindow();
+            }
+        });
+        isPlaying = true;
+        mContentView.startAnimation(outAnimation);
+        mShadowView.startAnimation(alphaAnimation);
+    }
+
+    private void clearAnimation(){
+        mContainer.clearAnimation();
+        mShadowView.clearAnimation();
+    }
+
+    private void detachedFromWindow() {
+        mDecorView.removeView(mContainer);
+        if(mDialogBuilder.getOnDismissListener() != null){
+            mDialogBuilder.getOnDismissListener().onDismiss(this);
+        }
+        mShowing = false;
     }
 
     @Override

@@ -36,5 +36,5 @@ public interface OnCancelListener {
      * @param dialog The dialog that was canceled will be passed into the
      *            method.
      */
-    public void onCancel(IDialogBuilder dialog);
+    public void onCancel(MasterDialog dialog);
 }

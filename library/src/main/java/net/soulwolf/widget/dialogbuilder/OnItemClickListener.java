@@ -36,5 +36,5 @@ public interface OnItemClickListener {
      * @param view Clicked View!
      * @param position Click the Dialog button list is the position!
      */
-    public void onItemClick(DialogBuilder dialog,View view, int position);
+    public void onItemClick(MasterDialog dialog,View view, int position);
 }

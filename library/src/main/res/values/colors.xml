@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="dc_container_show">#66000000</color>
+    <color name="dc_white">#FFFFFFFF</color>
+    <color name="dc_cancel_press">#FFEBEBEB</color>
+    <color name="dc_item_gray">#FFEBEBEB</color>
+    <color name="dc_item_press">#FFDBDBDB</color>
+    <color name="dc_green_text">#FF36D68E</color>
+    <color name="dc_content_text">#FF343434</color>
+    <color name="dc_green_text_press">#FF1ED68D</color>
+    <color name="dc_default_line">#FFDBDBDB</color>
 </resources>
