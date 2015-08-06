@@ -6,7 +6,7 @@ For more information please see <a href='http://devsoulwolf.github.io/android-di
 ## Screenshots
 <param name="FileName" value="Screenshots/simple.avi">
 <object type="video/x-msvideo" data="Screenshots/simple.avi" width="320" height="240">
-![Sample](../Screenshots/simple.avi)
+![Sample](Screenshots/simple.avi)
 
 
 ## android-dialog-builder with Java code
