@@ -5,7 +5,7 @@ For more information please see <a href='http://devsoulwolf.github.io/android-di
 
 ## Screenshots
 
-![Sample]("http://a1.qpic.cn/psb?/V130iVeS06FsJW/ULfFrv6tZ920B3jCA839sMuMladxVaVbE8*f50X187c!/b/dGkAAAAAAAAA&bo=aAGAAgAAAAACgE8!&rf=viewer_4")
+![Sample]("https://github.com/devsoulwolf/android-dialog-builder/blob/master/Screenshots/android-dialog-builder-sample.gif")
 
 ## android-dialog-builder with Java code
 ```java
