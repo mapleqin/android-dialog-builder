@@ -73,7 +73,8 @@ public abstract class MasterDialog implements IMasterDialog{
     }
 
     private void parserLayoutGravity() {
-        this.mContainer.addView(mContentView,mDialogBuilder.getLayoutParams());
+        this.mContainer.addView(mContentView, mDialogBuilder.getLayoutParams());
+        //this.mContainer.setPadding(0, 0, 0, getNavigationBarHeight());
     }
 
     protected abstract View onCreateView(LayoutInflater inflater,ViewGroup container);
@@ -87,6 +88,10 @@ public abstract class MasterDialog implements IMasterDialog{
         if(mDialogBuilder.getOnShowListener() != null){
             mDialogBuilder.getOnShowListener().onShow(this);
         }
+    }
+
+    private int getNavigationBarHeight(){
+        return Utils.getNavigationBarHeight(getContext());
     }
 
     private void attachToWindow() {

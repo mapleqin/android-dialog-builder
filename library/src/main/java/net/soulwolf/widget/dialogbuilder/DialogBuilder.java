@@ -191,7 +191,7 @@ public class DialogBuilder implements IDialogBuilder{
         mLayoutParams.leftMargin = l;
         mLayoutParams.topMargin = t;
         mLayoutParams.rightMargin = r + getStatusBarHeight();
-        mLayoutParams.bottomMargin = b;
+        mLayoutParams.bottomMargin = b ;
         return this;
     }
 
