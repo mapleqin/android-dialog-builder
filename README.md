@@ -4,7 +4,7 @@ This is an android in the Dialog library, not based on a systematic way to achie
 For more information please see <a href='http://devsoulwolf.github.io/android-dialog-builder'>the website</a>
 
 ## Screenshots
-
+<object type="video/x-msvideo" data="../Screenshots/simple.avi" width="320" height="240">
 ![Sample](../Screenshots/simple.avi)
 
 
