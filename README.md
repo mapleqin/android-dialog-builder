@@ -4,15 +4,8 @@ This is an android in the Dialog library, not based on a systematic way to achie
 For more information please see <a href='http://devsoulwolf.github.io/android-dialog-builder'>the website</a>
 
 ## Screenshots
-<<<<<<< HEAD
 
 ![Sample]("Screenshots/android-dialog-builder-sample.gif")
-=======
-<param name="FileName" value="Screenshots/simple.avi">
-<object type="video/x-msvideo" data="Screenshots/simple.avi" width="320" height="240">
-![Sample](Screenshots/simple.avi)
->>>>>>> 1b8f31d084c8550104c59af28c5a4c2dd2d1446a
-
 
 ## android-dialog-builder with Java code
 ```java
