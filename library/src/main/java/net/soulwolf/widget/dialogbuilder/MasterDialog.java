@@ -95,6 +95,11 @@ public abstract class MasterDialog implements IMasterDialog{
     }
 
     private void attachToWindow() {
+        if(isShowShadow()){
+            mShadowView.setVisibility(View.VISIBLE);
+        }else {
+            mShadowView.setVisibility(View.GONE);
+        }
         mDecorView.addView(mContainer, FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.MATCH_PARENT);
         playDialogInAnimation();
         mContainer.requestFocus();
@@ -133,10 +138,12 @@ public abstract class MasterDialog implements IMasterDialog{
         clearAnimation();
         Animation inAnimation = mDialogBuilder.getDialogInAnimation();
         if(inAnimation != null){
-            AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f,1.0f);
-            alphaAnimation.setDuration(inAnimation.getDuration());
             mContentView.startAnimation(inAnimation);
-            mShadowView.startAnimation(alphaAnimation);
+            if(isShowShadow()){
+                AlphaAnimation alphaAnimation = new AlphaAnimation(0.0f,1.0f);
+                alphaAnimation.setDuration(inAnimation.getDuration());
+                mShadowView.startAnimation(alphaAnimation);
+            }
         }
     }
 
@@ -168,8 +175,6 @@ public abstract class MasterDialog implements IMasterDialog{
             return;
         }
         clearAnimation();
-        AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f,0.0f);
-        alphaAnimation.setDuration(outAnimation.getDuration());
         outAnimation.setAnimationListener(new SimpleAnimationListener(){
             @Override
             public void onAnimationEnd(Animation animation) {
@@ -179,7 +184,11 @@ public abstract class MasterDialog implements IMasterDialog{
         });
         isPlaying = true;
         mContentView.startAnimation(outAnimation);
-        mShadowView.startAnimation(alphaAnimation);
+        if(isShowShadow()){
+            AlphaAnimation alphaAnimation = new AlphaAnimation(1.0f,0.0f);
+            alphaAnimation.setDuration(outAnimation.getDuration());
+            mShadowView.startAnimation(alphaAnimation);
+        }
     }
 
     private void clearAnimation(){
@@ -210,5 +219,9 @@ public abstract class MasterDialog implements IMasterDialog{
     @Override
     public Context getContext() {
         return mContext;
+    }
+
+    protected boolean isShowShadow(){
+        return true;
     }
 }
