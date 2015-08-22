@@ -5,10 +5,9 @@ For more information please see <a href='http://devsoulwolf.github.io/android-di
 
 ## Screenshots
 
+<img src='https://github.com/devsoulwolf/android-dialog-builder/blob/master/Screenshots/android-dialog-builder-sample.gif'/>
 
-
-
-## PictureChooseLib with Java code
+## android-dialog-builder with Java code
 ```java
 public void onClick(View v){
         if(v.getId() == R.id.left){

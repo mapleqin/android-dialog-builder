@@ -16,8 +16,14 @@
  */
 package net.soulwolf.widget.dialogbuilder;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.res.Resources;
+import android.os.Build;
 import android.util.DisplayMetrics;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
+import android.view.ViewConfiguration;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -46,5 +52,29 @@ final class Utils {
     static int getStatusBarHeight(Context context){
         DisplayMetrics metrics = context.getResources().getDisplayMetrics();
         return  (int) Math.ceil( 17 * metrics.density);
+    }
+
+    static int getNavigationBarHeight(Context context) {
+        int navigationBarHeight = 0;
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH){
+            Resources rs = context.getResources();
+            int id = rs.getIdentifier("navigation_bar_height", "dimen", "android");
+            if (id > 0 && checkDeviceHasNavigationBar(context)) {
+                navigationBarHeight = rs.getDimensionPixelSize(id);
+            }
+        }
+        return navigationBarHeight;
+    }
+
+    @SuppressLint("NewApi")
+    static boolean checkDeviceHasNavigationBar(Context context) {
+        boolean hasMenuKey = ViewConfiguration.get(context)
+                .hasPermanentMenuKey();
+        boolean hasBackKey = KeyCharacterMap
+                .deviceHasKey(KeyEvent.KEYCODE_BACK);
+        if (!hasMenuKey && !hasBackKey) {
+            return true;
+        }
+        return false;
     }
 }

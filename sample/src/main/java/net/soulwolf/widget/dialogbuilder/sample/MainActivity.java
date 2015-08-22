@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             DialogBuilder builder = new DialogBuilder(this)
                     .setAnimation(R.anim.da_slide_in_left, R.anim.da_slide_out_left)
                     //.setIgnoreStatusBar(false)
-                    .setLayoutParams(700, ViewGroup.LayoutParams.MATCH_PARENT)
+                    .setLayoutParams(400, ViewGroup.LayoutParams.MATCH_PARENT)
                     .setGravity(Gravity.LEFT)
                     .setOnItemClickListener(this)
                     .setBackgroundResource(R.color.toolbar_background);
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             DialogBuilder builder = new DialogBuilder(this)
                     .setAnimation(R.anim.da_slide_in_right, R.anim.da_slide_out_right)
                     //.setIgnoreStatusBar(false)
-                    .setLayoutParams(700, ViewGroup.LayoutParams.MATCH_PARENT)
+                    .setLayoutParams(400, ViewGroup.LayoutParams.MATCH_PARENT)
                     .setGravity(Gravity.RIGHT)
                     .setOnItemClickListener(this)
                     .setBackgroundResource(R.color.toolbar_background);
