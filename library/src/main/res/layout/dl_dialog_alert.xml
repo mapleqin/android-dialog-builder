@@ -26,7 +26,6 @@
             android:id="@android:id/text2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:padding="@dimen/dd_dialog_content_padding"
             android:clickable="true"
             android:textColor="@color/dc_content_text"

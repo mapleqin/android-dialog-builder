@@ -113,4 +113,24 @@ public class AlertMasterDialog extends MasterDialog implements View.OnClickListe
             mDialogBuilder.getOnItemClickListener().onItemClick(this,v,position);
         }
     }
+
+    public TextView getTitleView() {
+        return mTitleView;
+    }
+
+    public TextView getContentText() {
+        return mContentText;
+    }
+
+    public TextView getButton1() {
+        return mButton1;
+    }
+
+    public TextView getButton2() {
+        return mButton2;
+    }
+
+    public View getButtonSpace() {
+        return mButtonSpace;
+    }
 }
