@@ -1,3 +1,6 @@
+# warning
+The library was suspended on April 1, 2017
+
 # android-dialog-builder
 This is an android in the Dialog library, not based on a systematic way to achieve Dialog using Activity root view of the Add Dialog, it has strong scalability and customizability!
 
