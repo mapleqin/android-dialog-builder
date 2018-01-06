@@ -10,7 +10,7 @@ For more information please see <a href='https://amphiaraus.org/android-dialog-b
 
 ## Screenshots
 
-<img src='https://github.com/devsoulwolf/android-dialog-builder/blob/master/Screenshots/android-dialog-builder-sample.gif'/>
+<img src='https://github.com/amphiaraus/android-dialog-builder/raw/master/Screenshots/android-dialog-builder-sample.gif'/>
 
 ## android-dialog-builder with Java code
 ```java
